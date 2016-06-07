@@ -12,7 +12,7 @@ RUN apt-get -y upgrade
 # Install packages
 RUN apt-get -y install cmake
 RUN apt-get -y install g++
-RUN apt-get -y install libboost-dev
+RUN apt-get -y install libboost-all-dev
 RUN apt-get -y install wget
 RUN apt-get -y install zip
 RUN apt-get -y install git
@@ -24,6 +24,7 @@ WORKDIR /sources/rdkit
 RUN cd External/INCHI-API && bash download-inchi.sh
 WORKDIR /sources/rdkit/build
 RUN cmake .. -DRDK_BUILD_PYTHON_WRAPPERS=OFF -DRDK_BUILD_INCHI_SUPPORT=ON
+RUN make install
 
 # Install LPSolve
 
